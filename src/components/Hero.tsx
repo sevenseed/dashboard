@@ -34,6 +34,9 @@ const Hero = () => {
 							<Button href="/signup" color="blue">
 								{t("getStarted")}
 							</Button>
+							<Button href="/team" variant="outline" color="blue">
+								Our Team
+							</Button>
 							<Button href="/contact" variant="outline" color="blue">
 								{t("contactUs")}
 							</Button>

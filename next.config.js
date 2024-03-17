@@ -25,6 +25,13 @@ const nextConfig = withNextIntl({
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
+	images: {
+		remotePatterns: [
+			{
+				hostname: "ozgrozer.github.io",
+			},
+		],
+	},
 	experimental: {
 		serverActions: true,
 	},

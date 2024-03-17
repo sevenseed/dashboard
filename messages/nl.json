@@ -88,5 +88,15 @@
 		"gitHub": "GitHub",
 		"copyright": "Seven Seed BV. Alle rechten voorbehouden.",
 		"privacyPolicy": "Privacybeleid"
+	},
+	"Team": {
+		"title": "Ontmoet het team",
+		"linkedin": "LinkedIn",
+		"jerome-leclanche": "Jerome Leclanche",
+		"jerome-leclanche-description": "Algemeen Directeur",
+		"founder": "Oprichter",
+		"brent-dedecker": "Brent Dedecker",
+		"business-development": "Zakelijke Ontwikkeling",
+		"brent-dedecker-description": "Verkoop · BE / VK"
 	}
 }

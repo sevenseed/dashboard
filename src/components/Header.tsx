@@ -7,7 +7,13 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/images/logo.svg";
-const navigation = [{ name: "Contact", href: "/contact" }];
+const navigation = [
+	{ name: "Contact", href: "/contact" },
+	{
+		name: "Our Team",
+		href: "/team",
+	},
+];
 
 const Header = () => {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
