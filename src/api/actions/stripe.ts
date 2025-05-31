@@ -1,8 +1,8 @@
 "use server";
-import Stripe from "stripe";
 import { createKYCSessionForOwner, getOwnerById } from "@/api/actions/database";
-import { STRIPE_SK } from "@/config";
 import type { CompanyOwner } from "@/api/interfaces/owners";
+import { STRIPE_SK } from "@/config";
+import Stripe from "stripe";
 
 if (!STRIPE_SK) throw new Error("STRIPE_SK not found in server actions");
 
@@ -70,6 +70,7 @@ export async function createOrReturnVerificationSession(ownerId: CompanyOwner["i
 
 	try {
 		await createKYCSessionForOwner(ownerId, verificationSession.id);
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	} catch (error: any) {
 		throw new Error(error.message);
 	}

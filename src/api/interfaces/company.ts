@@ -1,9 +1,9 @@
-import type { Dispatch, SetStateAction, FormEventHandler } from "react";
-import type { UUID } from "crypto";
-import type { AddressType, GenericObject } from "@/api/types";
 import type { Form } from "@/api/interfaces/form";
 import type { CompanyOwner } from "@/api/interfaces/owners";
+import type { AddressType, GenericObject } from "@/api/types";
 import type { OwnersAction } from "@/contexts/partials/CompanyOwners";
+import type { UUID } from "crypto";
+import type { Dispatch, FormEventHandler, SetStateAction } from "react";
 
 // * keys to be removed from company data upon retrieval of company database info
 export const DATABASE_OMIT_KEYS = [
@@ -63,7 +63,8 @@ export interface DatabaseReadyCompanyData {
 export interface NewCompanyContext {
 	forms: Form[];
 	step: Form["id"];
-	setStep: Function;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	setStep: any;
 
 	companyData: CompanyData;
 	setCompanyData: Dispatch<SetStateAction<CompanyData>>;
@@ -76,6 +77,8 @@ export interface NewCompanyContext {
 
 	nextStep: Form | null;
 	previousStep: Form | null;
-	moveToNextStep: Function;
-	moveToPreviousStep: Function;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	moveToNextStep: any;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	moveToPreviousStep: any;
 }

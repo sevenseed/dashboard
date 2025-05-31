@@ -30,7 +30,7 @@ const ExpandableContext = createContext({
 });
 
 export function Expandable(props: ComponentPropsWithoutRef<"div">) {
-	let [isExpanded, setIsExpanded] = useState(false);
+	const [isExpanded, setIsExpanded] = useState(false);
 
 	return (
 		<ExpandableContext.Provider
@@ -53,13 +53,13 @@ export function ExpandableItems({
 	children: ReactNode;
 	limit?: number;
 }) {
-	let { isExpanded } = useContext(ExpandableContext);
+	const { isExpanded } = useContext(ExpandableContext);
 
 	return Children.toArray(children).slice(0, isExpanded ? undefined : limit);
 }
 
 export function ExpandableButton({ children }: { children: ReactNode }) {
-	let { isExpanded, expand } = useContext(ExpandableContext);
+	const { isExpanded, expand } = useContext(ExpandableContext);
 
 	return (
 		!isExpanded && (

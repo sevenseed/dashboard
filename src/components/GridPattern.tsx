@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, useId } from "react";
 
 export function GridPattern(props: Omit<ComponentPropsWithoutRef<"pattern">, "id">) {
-	let patternId = useId();
+	const patternId = useId();
 
 	return (
 		<svg

@@ -3,7 +3,8 @@ export type NullableString = Nullable<string>;
 
 export type KeyArray<T> = Array<keyof T>;
 
-export interface GenericObject extends Object {
+export interface GenericObject {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	[key: string | number]: any;
 }
 

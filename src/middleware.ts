@@ -26,7 +26,7 @@ export const intlResponse = (request: NextRequest) => {
 };
 
 const middleware = async (request: NextRequest) => {
-	let response = intlResponse(request) ?? NextResponse.next();
+	const response = intlResponse(request) ?? NextResponse.next();
 	request.headers.set("x-url", request.url);
 
 	const supabase = createClient();

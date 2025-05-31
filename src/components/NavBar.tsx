@@ -34,9 +34,9 @@ function MenuIcon({
 }
 
 export function NavBar() {
-	let navBarRef = useRef<ElementRef<"div">>(null);
-	let [activeIndex, setActiveIndex] = useState<number | null>(null);
-	let mobileActiveIndex = activeIndex === null ? 0 : activeIndex;
+	const navBarRef = useRef<ElementRef<"div">>(null);
+	const [activeIndex, setActiveIndex] = useState<number | null>(null);
+	const mobileActiveIndex = activeIndex === null ? 0 : activeIndex;
 	const t = useTranslations("NavBar");
 	const sections = useMemo(
 		() => [
@@ -54,27 +54,24 @@ export function NavBar() {
 			}
 
 			let newActiveIndex = null;
-			let elements = sections
+			const elements = sections
 				.map(({ id }) => document.getElementById(id))
 				.filter((el): el is HTMLElement => el !== null);
-			let bodyRect = document.body.getBoundingClientRect();
-			let offset = bodyRect.top + navBarRef.current.offsetHeight + 1;
+			const bodyRect = document.body.getBoundingClientRect();
+			const offset = bodyRect.top + navBarRef.current.offsetHeight + 1;
 
 			if (window.scrollY >= Math.floor(bodyRect.height) - window.innerHeight) {
 				setActiveIndex(sections.length - 1);
 				return;
 			}
 
-			for (let index = 0; index < elements.length; index++) {
-				if (
-					window.scrollY >=
-					elements[index].getBoundingClientRect().top - offset
-				) {
+			elements.forEach((element, index) => {
+				if (window.scrollY >= element.getBoundingClientRect().top - offset) {
 					newActiveIndex = index;
 				} else {
-					break;
+					return;
 				}
-			}
+			});
 
 			setActiveIndex(newActiveIndex);
 		}

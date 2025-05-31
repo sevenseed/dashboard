@@ -1,13 +1,13 @@
-import { PropsWithChildren } from "react";
-import { type Metadata } from "next";
-import { headers } from "next/headers";
-import { Inter } from "next/font/google";
 import locales from "@/locales";
 import clsx from "clsx";
+import { type Metadata } from "next";
+import { Inter } from "next/font/google";
+import { headers } from "next/headers";
+import { PropsWithChildren } from "react";
 
-import "@/styles/tailwind.css";
-import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import "@/styles/tailwind.css";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 		"Join a six month tech startup incubation program. Apply before July 1st for the next cohort.",
 };
 
-export default function RootLayout({ children }: PropsWithChildren) {
+const RootLayout = ({ children }: PropsWithChildren) => {
 	const url = headers().get("x-url");
 	if (!url) {
 		throw new Error("Unknown url");
@@ -83,4 +83,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
 			</body>
 		</html>
 	);
-}
+};
+
+export default RootLayout;

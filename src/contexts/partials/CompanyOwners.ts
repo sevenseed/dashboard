@@ -1,6 +1,6 @@
+import type { CompanyOwner } from "@/api/interfaces/owners";
 import { getRandomColor } from "@/utilities";
 import type { UUID } from "crypto";
-import type { CompanyOwner } from "@/api/interfaces/owners";
 
 export type OwnersAction =
 	// * "ADD" type takes no parameters on purpose
@@ -42,9 +42,9 @@ export function ownersReducer(state: CompanyOwner[], action: OwnersAction) {
 		case "REMOVE":
 			return state.filter((owner) => owner.id !== action.id);
 		case "UPDATE":
+			// eslint-disable-next-line no-case-declarations
 			const index = state.findIndex((owner) => owner.id === action.obj.id);
-			const originalObject = state[index];
-			return state.toSpliced(index, 1, Object.assign(originalObject, action.obj));
+			return state.toSpliced(index, 1, Object.assign(state[index], action.obj));
 
 		default:
 			return state;
