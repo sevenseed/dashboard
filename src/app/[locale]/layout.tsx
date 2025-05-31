@@ -1,8 +1,6 @@
-import locales from "@/locales";
 import clsx from "clsx";
 import { type Metadata } from "next";
 import { Inter } from "next/font/google";
-import { headers } from "next/headers";
 import { PropsWithChildren } from "react";
 
 import Footer from "@/components/layout/Footer";
@@ -22,10 +20,6 @@ export const metadata: Metadata = {
 };
 
 const RootLayout = ({ children }: PropsWithChildren) => {
-	const url = headers().get("x-url");
-	if (!url) {
-		throw new Error("Unknown url");
-	}
 	return (
 		<html
 			lang="en"
@@ -44,8 +38,6 @@ const RootLayout = ({ children }: PropsWithChildren) => {
 					rel="stylesheet"
 					href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,500,700&display=swap"
 				/>
-				{/* Stripe recommends preloading its JS toolkit because it enables them to track potential fraud better */}
-				<script src="https://js.stripe.com/v3" async />
 
 				{/* --- Open Graph Meta Tags --- */}
 				<meta property="og:type" content="website" />
@@ -63,18 +55,6 @@ const RootLayout = ({ children }: PropsWithChildren) => {
 					content="https://sevenseed.eu/images/sevenseed-og.png"
 				/>
 				<meta property="og:site_name" content="Seven Seed" />
-				{locales.map((locale) => {
-					const urlObj = new URL(url);
-					urlObj.searchParams.set("lang", locale);
-					return (
-						<link
-							key={locale}
-							rel="alternate"
-							hrefLang={locale}
-							href={urlObj.toString()}
-						/>
-					);
-				})}
 			</head>
 			<body className="flex min-h-full flex-col">
 				<Header />

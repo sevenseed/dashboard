@@ -1,11 +1,9 @@
-import { NextResponse, type NextRequest } from "next/server";
-import createIntlMiddleware from "next-intl/middleware";
-import { createClient } from "@/supabase/server";
 import locales from "@/locales";
+import createIntlMiddleware from "next-intl/middleware";
+import { NextResponse, type NextRequest } from "next/server";
 
 export const intlResponse = (request: NextRequest) => {
 	const url = new URL(request.url);
-	console.log(url.pathname);
 	if (url.pathname.startsWith("/images") || url.pathname.startsWith("/_next")) {
 		return null;
 	}
@@ -27,14 +25,6 @@ export const intlResponse = (request: NextRequest) => {
 
 const middleware = async (request: NextRequest) => {
 	const response = intlResponse(request) ?? NextResponse.next();
-	request.headers.set("x-url", request.url);
-
-	const supabase = createClient();
-
-	await supabase.auth.getSession();
-
-	response.headers.set("x-url", request.url);
-
 	return response;
 };
 
